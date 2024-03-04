@@ -7,28 +7,45 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.BreakIterator;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity {
 public static final String KEY = "google";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button  = findViewById(R.id.button);
-        button.setOnClickListener(this);
 
-    }
+//        ConstraintLayout constraintLayout = new ConstraintLayout(this);
+//        TextView textView = new TextView(this);
+//        textView.setText(R.string.hello_practice_java);
+//        textView.setTextSize(26);
+//
+//        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(
+//                ConstraintLayout.LayoutParams.MATCH_PARENT,
+//                ConstraintLayout.LayoutParams.WRAP_CONTENT
+//        );
+//
+//        layoutParams.leftToLeft = ConstraintLayout.LayoutParams.PARENT_ID;
+//        layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+//
+//        textView.setLayoutParams(layoutParams);
+//        constraintLayout.addView(textView);
+//        // установка корня лейаута
+//        setContentView(constraintLayout);
 
+        EditText editText = findViewById(R.id.editTextText);
+        Button button = findViewById(R.id.button);
+        TextView textView = findViewById(R.id.textView4);
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        intent.putExtra(KEY, "userInput");
+        textView.setMaxWidth(1000);
 
-        startActivity(intent);
-
+        button.setOnClickListener(v -> {
+            String inputText = editText.getText().toString();
+            textView.setText("You entered: " + inputText);
+        });
     }
 }
 
